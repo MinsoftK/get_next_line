@@ -48,3 +48,5 @@ Write a function which returns a line read from a file descriptor, without the n
 - Single Static Variable로 get_next_line 성공하기.
 - 다중 file descriptor를 관리 할 수 있는 함수로 만들기. 예를 들어 file descriptor 3, 4, 5를 읽을 수 있는 경우, get_next_line은 3에서 한 번, 4에서 한 번, 다시 3에 서 한 번, 5에서 한 번 호출할 수 있어야 한다. 각 descriptor의 reading thread를 잃지 않으면서 말이다.
 
+### 📕reference :  
+[hidaehyunlee](https://github.com/hidaehyunlee/Get-Next-Line/blob/master/README.md)
