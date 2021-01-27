@@ -10,4 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
+# include <unistd.h>
+# include <stdlib.h>
+
+# define READ 1
+# define EOF 0
+# define ERROR -1
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1024
+#endif
+
+#ifndef OPEN_MAX
+# define OPEN_MAX 4096
+#endif
+
+int		get_next_line(int fd, char **line);
+
+
+
+#endif
