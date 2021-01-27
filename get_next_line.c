@@ -14,5 +14,11 @@
 
 int get_next_line(int fd, char **line)
 {
+	char 			buff[BUFFER_SIZE + 1];
+	static char		*backup[OPEN_MAX];
+
+	
+	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
+		return (-1);
 	
 }
