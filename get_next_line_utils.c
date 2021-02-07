@@ -66,3 +66,22 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	temp[i + j] = '\0';
 	return (temp);
 }
+
+void	*ft_strdup(const char *s)
+{
+	int		len;
+	char	*temp;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(s);
+	if (!((temp = (char *)malloc(sizeof(char) * (len + 1)))))
+	return (NULL);
+	while (i < len)
+	{
+		temp[i] = s[i];
+		i++;
+	}
+	temp[i] = '\0';
+	return (temp);
+}
