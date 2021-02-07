@@ -12,23 +12,27 @@
 
 #include "get_next_line.h"
 
-int		is_newline(const char *buff)
+int		is_newline(const char *backup)
 {
 	size_t idx;
 
 	idx = 0;
-	while (buff[idx])
+	while (backup[idx])
 	{
-		if (buff[idx] == '\n')
+		if (backup[idx] == '\n')
 			return (idx);
 		idx++;
 	}
 	return (-1);
 }
 
-int		print_gnl(char **backup, char **line, size_t new_idx)
+int		set_newline(char **backup, char **line, size_t new_idx)
 {
+	char	*temp;
+	int 	len;
+	
 	*backup[new_idx] = '\0';
+	temp = ft_strdup()
 	return (0);
 }
 
@@ -46,7 +50,8 @@ int		get_next_line(int fd, char **line)
 		buff[rd_size] = '\0';
 		backup[fd] = ft_strjoin(backup[fd], buff);
 		if ((new_idx = is_newline(backup[fd])) >= 0)
-			return (print_gnl(&backup[fd], line, new_idx));
+			return (set_newline(&backup[fd], line, new_idx));
 	}
+	return (return_all())
 }
 

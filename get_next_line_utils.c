@@ -85,3 +85,21 @@ void	*ft_strdup(const char *s)
 	temp[i] = '\0';
 	return (temp);
 }
+
+char	*ft_strchr(const char *str, int ch)
+{
+	int		i;
+	char	temp;
+	char	*stemp;
+
+	i = 0;
+	temp = (char)ch;
+	stemp = (char *)str;
+	while (stemp[i] != temp)
+	{
+		if (stemp[i] == '\0')
+			return (NULL);
+		i++;
+	}
+	return (&stemp[i]);
+}
