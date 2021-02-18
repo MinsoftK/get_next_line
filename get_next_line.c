@@ -6,7 +6,7 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:18 by minsungk          #+#    #+#             */
-/*   Updated: 2021/02/18 21:33:57 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/02/18 21:48:19 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,20 @@ int		split_newline(char **backup, char **line, size_t new_idx)
 
 int		get_next_line(int fd, char **line)
 {
-	char 			buff[BUFFER_SIZE];
+	char 			buff[BUFFER_SIZE + 1];
 	static char		*backup[OPEN_MAX];
 	size_t			rd_size;
 	size_t			new_idx;
 
 	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
 		return (ERROR);
-	while (0 < (rd_size = read(fd, (char *)buff, BUFFER_SIZE - 1)))
+	while (0 < (rd_size = read(fd, (char *)buff, BUFFER_SIZE)))
 	{
-		// buff[rd_size] = '\0';
+		buff[rd_size] = '\0';
 		backup[fd] = ft_strjoin(backup[fd], buff);
 		if ((new_idx = have_newline(backup[fd])) >= 0)
 			return (split_newline(&backup[fd], line, new_idx));
 	}
 	return ();
+	//line을 반환하는 함수 만들어주기
 }
