@@ -6,20 +6,20 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:18 by minsungk          #+#    #+#             */
-/*   Updated: 2021/02/18 15:37:03 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/02/18 17:16:40 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		have_newline(const char *backup)
+int		have_newline(const char *backupfd)
 {
 	size_t idx;
 
 	idx = 0;
-	while (backup[idx])
+	while (backupfd[idx])
 	{
-		if (backup[idx] == '\n')
+		if (backupfd[idx] == '\n')
 			return (idx);
 		idx++;
 	}
@@ -28,7 +28,16 @@ int		have_newline(const char *backup)
 
 int		split_newline(char **backup, char **line, size_t new_idx)
 {
+	size_t temp;
+	char *temp1;
+	temp = ft_strlen(*backup);
+	(*backup)[new_idx] = '\0';
+	free(*backup);
+	*backup = *backup + new_idx;
+	
+	*line = ft_strdup(*backup);
 
+	*backup = *backup
 }
 
 int		get_next_line(int fd, char **line)
@@ -46,7 +55,6 @@ int		get_next_line(int fd, char **line)
 		backup[fd] = ft_strjoin(backup[fd], buff);
 		if ((new_idx = have_newline(backup[fd])) >= 0)
 			return (split_newline(&backup[fd], line, new_idx));
-		
 	}
 	return ()
 }
