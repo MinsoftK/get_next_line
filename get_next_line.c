@@ -26,13 +26,15 @@ int		is_newline(const char *backup)
 	return (-1);
 }
 
-int		set_newline(char **backup, char **line, size_t new_idx)
+int		set_newline(char **backup, char **line)
 {
 	char	*temp;
 	int 	len;
+
+	*backup[len] = '\0';
+	*line = ft_strdup(*backup);
+	len = ft_strlen(*backup + len + 1)
 	
-	*backup[new_idx] = '\0';
-	temp = ft_strdup()
 	return (0);
 }
 
@@ -40,18 +42,20 @@ int		get_next_line(int fd, char **line)
 {
 	char 			buff[BUFFER_SIZE];
 	static char		*backup[OPEN_MAX];
-	size_t			rd_size;
-	size_t			new_idx;
+	long long		len;
+	char			*tmp_str;
 
-	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || read(fd, buff, 0))
 		return (-1);
-	while (0 < (rd_size = read(fd, (char *)buff, BUFFER_SIZE - 1)))
+	while (!(ft_strchr(buff[fd], '\n')) && \
+	0 < (len = read(fd, (char *)buff, BUFFER_SIZE - 1)))
 	{
-		buff[rd_size] = '\0';
-		backup[fd] = ft_strjoin(backup[fd], buff);
-		if ((new_idx = is_newline(backup[fd])) >= 0)
-			return (set_newline(&backup[fd], line, new_idx));
+		buff[len] = '\0';
+		tmp_str = ft_strjoin(backup[fd], buff);
+		if (backup[fd])
+			free(backup[fd]);
+		backup[fd] = tmp_str;
 	}
-	return (return_all())
+	return (return_all());
 }
 

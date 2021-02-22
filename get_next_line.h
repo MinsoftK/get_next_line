@@ -34,5 +34,7 @@ int		get_next_line(int fd, char **line);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_strdup(const char *s);
+char	*ft_strchr(const char *str, int ch);
 
 #endif
