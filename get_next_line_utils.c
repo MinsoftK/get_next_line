@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minsungk <minsungk@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:46 by minsungk          #+#    #+#             */
-/*   Updated: 2021/01/12 22:09:48 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/02/18 17:16:40 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,6 @@ size_t		ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-size_t		ft_strlcpy(char *dest, const char *src, size_t size)
-{
-	size_t i;
-	size_t temp;
-
-	i = 0;
-	temp = ft_strlen(src);
-	if (!dest || !src)
-		return (0);
-	while (i < temp && i + 1 < size)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	if (size > 0)
-		dest[i] = '\0';
-	return (temp);
 }
 
 char		*ft_strjoin(char const *s1, char const *s2)
@@ -102,4 +83,25 @@ char	*ft_strchr(const char *str, int ch)
 		i++;
 	}
 	return (&stemp[i]);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*temp;
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	if (!(temp = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (i < len && s[start + i])
+	{
+		if (ft_strlen(s) <= start)
+			break ;
+		temp[i] = s[start + i];
+		i++;
+	}
+	temp[i] = '\0';
+	return (temp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minsungk <minsungk@student.42.kr>          +#+  +:+       +#+        */
+/*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:10:08 by minsungk          #+#    #+#             */
-/*   Updated: 2021/01/12 22:10:09 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/02/18 17:04:41 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,13 @@
 #endif
 
 int		get_next_line(int fd, char **line);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_strdup(const char *s);
+<<<<<<< HEAD
 char	*ft_strchr(const char *str, int ch);
 
+=======
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+>>>>>>> d4bd0f49504fd5e480a8e8383e9dcf35cc0542c0
 #endif
