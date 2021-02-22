@@ -45,6 +45,11 @@ int		split_newline(char **backup, char **line, size_t new_idx)
 	return (1);
 }
 
+int		return_all(char **backup, char **line, int len)
+{
+	
+}
+
 int		get_next_line(int fd, char **line)
 {
 	char 			buff[BUFFER_SIZE + 1];
@@ -63,5 +68,5 @@ int		get_next_line(int fd, char **line)
 			free(backup[fd]);
 		backup[fd] = tmp_str;
 	}
-	return (return_all());
+	return (return_all(&backup[fd], line, len));
 }
