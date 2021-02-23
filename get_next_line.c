@@ -6,7 +6,7 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:18 by minsungk          #+#    #+#             */
-/*   Updated: 2021/02/18 21:48:19 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/02/23 13:25:15 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,16 @@ int		split_newline(char **backup, char **line, size_t new_idx)
 	return (1);
 }
 
-int		return_all(char **backup, char **line, int len)
+int		return_text(char **backup, char **line, int len)
 {
-	
+	int	temp;
+
+	if (len == 0)
+		return (-1);
+	if (*backup && ((temp = have_newline(*backup)) > 0))
+	{
+		
+	}
 }
 
 int		get_next_line(int fd, char **line)
@@ -59,8 +66,7 @@ int		get_next_line(int fd, char **line)
 
 	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || read(fd, buff, 0))
 		return (-1);
-	while (!(ft_strchr(buff[fd], '\n')) && \
-	0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
+	while (0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
 	{
 		buff[len] = '\0';
 		tmp_str = ft_strjoin(backup[fd], buff);
@@ -68,5 +74,5 @@ int		get_next_line(int fd, char **line)
 			free(backup[fd]);
 		backup[fd] = tmp_str;
 	}
-	return (return_all(&backup[fd], line, len));
+	return (return_text(&backup[fd], line, len));
 }
