@@ -34,5 +34,10 @@ int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_strdup(const char *s);
+<<<<<<< HEAD
+char	*ft_strchr(const char *str, int ch);
+
+=======
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+>>>>>>> d4bd0f49504fd5e480a8e8383e9dcf35cc0542c0
 #endif
