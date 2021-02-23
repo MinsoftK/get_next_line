@@ -6,7 +6,7 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:18 by minsungk          #+#    #+#             */
-/*   Updated: 2021/02/23 13:25:15 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/02/23 16:55:55 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,35 +26,48 @@ int		have_newline(const char *backupfd)
 	return (-1);
 }
 
-int		split_newline(char **backup, char **line, size_t new_idx)
+int		split_newline(char **backup, char **line)
 {
+	size_t	newline_idx;
 	size_t	len;
 	char	*temp;
 
-	(*backup)[new_idx] = '\0';
-	*line = ft_strdup(*backup);
-	len = ft_strlen(*backup + new_idx + 1);
+	newline_idx = have_newline(*backup);
+	*line = ft_substr(*backup, 0, newline_idx);
+	len = ft_strlen(*backup);
+	if (*backup)
+		free (*backup);
+	backup = temp;
 	if (len == 0)
 	{
 		*backup = 0;
 		return (1);
 	}
-	temp = ft_strdup(*backup + new_idx + 1);
+	temp = ft_strdup(*backup + newline_idx + 1);
 	free(*backup);
 	*backup = temp;
 	return (1);
 }
 
-int		return_text(char **backup, char **line, int len)
+int		error(char **backup)
 {
-	int	temp;
+	if (*backup)
+		free (*backup);
+	*backup = NULL;
+	return (ERROR);
+}
 
-	if (len == 0)
-		return (-1);
-	if (*backup && ((temp = have_newline(*backup)) > 0))
-	{
-		
-	}
+int		final_reset(char **backup, char **line)
+{
+	char *temp;
+	
+	temp = (char *)malloc(1);
+	*temp = '\0';
+	*line = *temp;
+	if (*backup)
+		free (*backup);
+	*backup = NULL;
+	return (EOF);
 }
 
 int		get_next_line(int fd, char **line)
@@ -66,7 +79,8 @@ int		get_next_line(int fd, char **line)
 
 	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || read(fd, buff, 0))
 		return (-1);
-	while (0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
+	while (!(ft_strchr(backup[fd], '\n')) && \
+	0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
 	{
 		buff[len] = '\0';
 		tmp_str = ft_strjoin(backup[fd], buff);
@@ -74,5 +88,9 @@ int		get_next_line(int fd, char **line)
 			free(backup[fd]);
 		backup[fd] = tmp_str;
 	}
-	return (return_text(&backup[fd], line, len));
+	if (len < 0)
+		return (error(&(backup[fd])));
+	if (len == 0 && backup[fd][0] == '\0')
+		return (final_reset(&(backup[fd]), line));
+	return (split_newline(&(backup[fd]), line));
 }

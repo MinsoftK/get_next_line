@@ -6,7 +6,7 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:46 by minsungk          #+#    #+#             */
-/*   Updated: 2021/02/18 17:16:40 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/02/23 16:26:32 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	*ft_strdup(const char *s)
 	i = 0;
 	len = ft_strlen(s);
 	if (!((temp = (char *)malloc(sizeof(char) * (len + 1)))))
-	return (NULL);
+		return (NULL);
 	while (i < len)
 	{
 		temp[i] = s[i];
