@@ -48,7 +48,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	return (temp);
 }
 
-void	*ft_strdup(const char *s)
+void		*ft_strdup(const char *s)
 {
 	int		len;
 	char	*temp;
@@ -67,7 +67,7 @@ void	*ft_strdup(const char *s)
 	return (temp);
 }
 
-char	*ft_strchr(const char *str, int ch)
+char		*ft_strchr(const char *str, int ch)
 {
 	int		i;
 	char	temp;
@@ -85,7 +85,7 @@ char	*ft_strchr(const char *str, int ch)
 	return (&stemp[i]);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char		*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*temp;
 	size_t	i;

@@ -49,7 +49,7 @@ int		split_newline(char **backup, char **line)
 int		error(char **backup)
 {
 	if (*backup)
-		free (*backup);
+		free(*backup);
 	*backup = NULL;
 	return (ERROR);
 }
@@ -57,24 +57,25 @@ int		error(char **backup)
 int		final_reset(char **backup, char **line)
 {
 	char *temp;
-	
+
 	temp = (char *)malloc(1);
 	*temp = '\0';
 	*line = temp;
 	if (*backup)
-		free (*backup);
+		free(*backup);
 	*backup = NULL;
 	return (EOF);
 }
 
 int		get_next_line(int fd, char **line)
 {
-	char 			buff[BUFFER_SIZE + 1];
+	char			buff[BUFFER_SIZE + 1];
 	static char		*backup[OPEN_MAX];
 	long long		len;
 	char			*tmp_str;
 
-	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || read(fd, buff, 0))
+	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0 \
+	|| read(fd, buff, 0))
 		return (-1);
 	while (!(ft_strchr(backup[fd], '\n')) && \
 	0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
