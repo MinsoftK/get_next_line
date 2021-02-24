@@ -60,7 +60,7 @@ int		final_reset(char **backup, char **line)
 	
 	temp = (char *)malloc(1);
 	*temp = '\0';
-	*line = *temp;
+	*line = temp;
 	if (*backup)
 		free (*backup);
 	*backup = NULL;
