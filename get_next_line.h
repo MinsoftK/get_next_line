@@ -18,7 +18,7 @@
 # include <limits.h>
 
 # define READ 1
-# define EOF 0
+# define EndLine 0
 # define ERROR -1
 
 # ifndef BUFFER_SIZE

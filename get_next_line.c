@@ -23,7 +23,7 @@ int		have_newline(const char *backupfd)
 			return (idx);
 		idx++;
 	}
-	return (-1);
+	return (ERROR);
 }
 
 int		split_newline(char **backup, char **line)
@@ -64,7 +64,7 @@ int		final_reset(char **backup, char **line)
 	if (*backup)
 		free(*backup);
 	*backup = NULL;
-	return (EOF);
+	return ();
 }
 
 int		get_next_line(int fd, char **line)

@@ -36,7 +36,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	len2 = ft_strlen(s2);
 	i = -1;
 	j = -1;
-	if (s1 == NULL && s2 == NULL)
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
 	if (s1 == NULL || s2 == NULL)
 		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
