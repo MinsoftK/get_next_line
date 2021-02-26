@@ -17,6 +17,8 @@ size_t		ft_strlen(const char *str)
 	size_t i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
@@ -36,8 +38,8 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	j = -1;
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
-	if (*s1 == 0 && *s2 == 0)
-		return (ft_strdup(""));
+	if (s1 == NULL || s2 == NULL)
+		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
 	if (!(temp = (char *)malloc(sizeof(char) * (len1 + len2 + 1))))
 		return (NULL);
 	while (++i < len1)
@@ -76,7 +78,7 @@ char		*ft_strchr(const char *str, int ch)
 	i = 0;
 	temp = (char)ch;
 	stemp = (char *)str;
-	if (str)
+	if (!str)
 		return (NULL);
 	while (stemp[i] != temp)
 	{
