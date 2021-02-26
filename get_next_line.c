@@ -64,7 +64,7 @@ int		final_reset(char **backup, char **line)
 	if (*backup)
 		free(*backup);
 	*backup = NULL;
-	return ();
+	return (EndLine);
 }
 
 int		get_next_line(int fd, char **line)
