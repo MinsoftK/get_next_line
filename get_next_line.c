@@ -74,8 +74,7 @@ int		get_next_line(int fd, char **line)
 	long long		len;
 	char			*tmp_str;
 
-	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0 \
-)
+	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
 		return (-1);
 	while (!(ft_strchr(backup[fd], '\n')) && \
 	0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
