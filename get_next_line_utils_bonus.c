@@ -6,11 +6,20 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:46 by minsungk          #+#    #+#             */
-/*   Updated: 2021/03/02 17:23:32 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/03/02 18:18:24 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char 	*ft_strnul(void)
+{
+	char *result;
+	
+	result = (char *)malloc(1);
+	*result = '\0';
+	return (result);
+}
 
 size_t		ft_strlen(const char *str)
 {
