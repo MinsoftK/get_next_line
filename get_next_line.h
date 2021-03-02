@@ -6,7 +6,7 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:10:08 by minsungk          #+#    #+#             */
-/*   Updated: 2021/02/23 12:53:12 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/03/02 18:18:05 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # endif
 
 int		get_next_line(int fd, char **line);
+char 	*ft_strnul(void);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_strdup(const char *s);
