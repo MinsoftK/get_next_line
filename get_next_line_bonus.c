@@ -33,13 +33,14 @@ int		split_newline(char **backup, char **line)
 	char	*temp;
 
 	newline_idx = have_newline(*backup);
-	*line = ft_substr(*backup, 0, newline_idx);
+	*line = (char *)malloc(newline_idx + 1);
 	len = ft_strlen(*backup);
 	if (len == 0)
 	{
 		*backup = 0;
 		return (1);
 	}
+	
 	temp = ft_strdup(*backup + newline_idx + 1);
 	free(*backup);
 	*backup = temp;

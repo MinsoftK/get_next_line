@@ -24,6 +24,15 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
+char		*ft_strnul(void)
+{
+	char *temp;
+
+	temp = (char *)malloc(1);
+	*temp = '\0';
+	return (temp);
+}
+
 char		*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
