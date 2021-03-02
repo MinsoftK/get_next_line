@@ -6,7 +6,7 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:18 by minsungk          #+#    #+#             */
-/*   Updated: 2021/03/02 18:18:31 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/03/02 19:10:34 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ int		split_newline(char **backup, char **line)
 	char	*temp;
 
 	newline_idx = have_newline(*backup);
-	*line = ft_substr(*backup, 0, newline_idx);
-	len = ft_strlen(*backup);
+	*backup[newline_idx] = '\0';
+	*line = ft_strdup(*backup);
+	len = ft_strlen(*backup + newline_idx + 1);
 	if (len == 0)
 	{
+		free(*backup);
 		*backup = 0;
 		return (1);
 	}
