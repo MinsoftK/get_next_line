@@ -6,7 +6,7 @@
 /*   By: minsungk <minsungk@stduent.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:09:18 by minsungk          #+#    #+#             */
-/*   Updated: 2021/03/02 17:01:28 by minsungk         ###   ########.fr       */
+/*   Updated: 2021/03/02 18:16:18 by minsungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,7 @@ int		error(char **backup)
 
 int		final_reset(char **backup, char **line)
 {
-	char *temp;
-	
-	temp = (char *)malloc(1);
-	*temp = '\0';
-	*line = temp;
+	*line = ft_strnul();
 	if (*backup)
 		free (*backup);
 	*backup = NULL;
