@@ -66,7 +66,7 @@ int		get_next_line(int fd, char **line)
 	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || read(fd, buff, 0) == -1)
 		return (-1);
 	if (!backup[fd])
-		backup[fd] = ft_strdup("");
+		backup[fd] = ft_strnul();
 	while (!(ft_strchr(backup[fd], '\n')) && \
 	0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
 	{
