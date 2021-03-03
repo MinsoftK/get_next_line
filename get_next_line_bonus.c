@@ -28,15 +28,17 @@ int		have_newline(const char *backupfd)
 
 int		set_newline(char **backup, char **line)
 {
-	int		newline_idx;
-	int		len;
 	int		result;
+	int		size;
 	char	*temp;
 
-	(*backup)[newline_idx] = '\0';
+	size = 0;
+	while ((*backup)[size] && (*backup)[size] != '\n')
+		size++;
+	(*backup)[size] = '\0';
 	*line = ft_strdup(*backup);
-	result = (((*line)[newline_idx - 1] == '\0') ? READ : EndLine);
-	temp = ft_strdup(*backup + newline_idx + 1);
+	result = (((*backup)[size] == '\0') ? READ : EndLine);
+	temp = ft_strdup(*backup + size + 1);
 	if (*backup && result == EndLine)
 		free (*backup);
 	*backup = temp;
