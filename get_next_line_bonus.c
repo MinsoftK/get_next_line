@@ -10,35 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
-
-int		have_newline(const char *backupfd)
-{
-	size_t idx;
-
-	idx = 0;
-	while (backupfd[idx])
-	{
-		if (backupfd[idx] == '\n')
-			return (idx);
-		idx++;
-	}
-	return (-1);
-}
+#include "get_next_line.h"
 
 int		set_newline(char **backup, char **line)
 {
 	int		result;
 	int		size;
+	int		i;
 	char	*temp;
 
 	size = 0;
 	while ((*backup)[size] && (*backup)[size] != '\n')
 		size++;
-	(*backup)[size] = '\0';
-	*line = ft_strdup(*backup);
-	result = (((*backup)[size] == '\0') ? READ : EndLine);
-	temp = ft_strdup(*backup + size + 1);
+	*line = (char *)malloc(size + 1);
+	i = 0;
+	while (i < size)
+	{
+		(*line)[i] = (*backup)[i];
+		i++;
+	}
+	(*line)[i] = '\0';
+	result = (((*backup)[size] == '\n') ? READ : EndLine);
+	temp = (result ? ft_sizepush(*backup, size + 1) : NULL);
+	
 	if (*backup && result == EndLine)
 		free (*backup);
 	*backup = temp;
@@ -48,27 +42,23 @@ int		set_newline(char **backup, char **line)
 int		error(char **backup)
 {
 	if (*backup)
-		free(*backup);
+		free (*backup);
 	*backup = NULL;
 	return (ERROR);
 }
 
 int		final_reset(char **backup, char **line)
 {
-	char *temp;
-
-	temp = (char *)malloc(1);
-	*temp = '\0';
-	*line = temp;
+	*line = ft_strnul();
 	if (*backup)
-		free(*backup);
+		free (*backup);
 	*backup = NULL;
 	return (EndLine);
 }
 
 int		get_next_line(int fd, char **line)
 {
-	char			buff[BUFFER_SIZE + 1];
+	char 			buff[BUFFER_SIZE + 1];
 	static char		*backup[OPEN_MAX];
 	long long		len;
 	char			*tmp_str;
@@ -78,7 +68,7 @@ int		get_next_line(int fd, char **line)
 	if (!backup[fd])
 		backup[fd] = ft_strdup("");
 	while (!(ft_strchr(backup[fd], '\n')) && \
-	(len = read(fd, (char *)buff, BUFFER_SIZE) > 0))
+	0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
 	{
 		buff[len] = '\0';
 		tmp_str = ft_strjoin(backup[fd], buff);

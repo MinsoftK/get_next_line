@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
-char 	*ft_strnul(void)
+char	*ft_strnul(void)
 {
 	char *result;
 	
@@ -21,9 +21,9 @@ char 	*ft_strnul(void)
 	return (result);
 }
 
-size_t		ft_strlen(const char *str)
+int		ft_strlen(const char *str)
 {
-	size_t i;
+	int i;
 
 	i = 0;
 	if (!str)
@@ -33,7 +33,7 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
 	size_t	len2;
@@ -59,26 +59,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	return (temp);
 }
 
-void		*ft_strdup(const char *s)
-{
-	int		len;
-	char	*temp;
-	int		i;
-
-	i = 0;
-	len = ft_strlen(s);
-	if (!((temp = (char *)malloc(sizeof(char) * (len + 1)))))
-		return (NULL);
-	while (i < len)
-	{
-		temp[i] = s[i];
-		i++;
-	}
-	temp[i] = '\0';
-	return (temp);
-}
-
-char		*ft_strchr(const char *str, int ch)
+char	*ft_strchr(const char *str, int ch)
 {
 	int		i;
 	char	temp;
@@ -98,23 +79,17 @@ char		*ft_strchr(const char *str, int ch)
 	return (&stemp[i]);
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_sizepush(char *backup, int size)
 {
-	char	*temp;
-	size_t	i;
-
+	int i;
+	
 	i = 0;
-	if (!s)
-		return (NULL);
-	if (!(temp = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (i < len && s[start + i])
+	while (backup[i + size])
 	{
-		if (ft_strlen(s) <= start)
-			break ;
-		temp[i] = s[start + i];
+		backup[i] = backup[i + size];
 		i++;
 	}
-	temp[i] = '\0';
-	return (temp);
+	while (backup[i])
+		backup[i++] = '\0';
+	return (backup);
 }

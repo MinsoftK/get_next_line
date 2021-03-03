@@ -31,9 +31,9 @@
 
 int		get_next_line(int fd, char **line);
 char 	*ft_strnul(void);
-size_t	ft_strlen(const char *str);
+int		ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_strdup(const char *s);
+char	*ft_sizepush(char *backup, int size);
 char	*ft_strchr(const char *str, int ch);
 
 #endif
