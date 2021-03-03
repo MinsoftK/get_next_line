@@ -12,15 +12,6 @@
 
 #include "get_next_line.h"
 
-char 	*ft_strnul(void)
-{
-	char *result;
-	
-	result = (char *)malloc(1);
-	*result = '\0';
-	return (result);
-}
-
 int		have_newline(const char *backupfd)
 {
 	size_t idx;
@@ -35,7 +26,7 @@ int		have_newline(const char *backupfd)
 	return (-1);
 }
 
-int		split_newline(char **backup, char **line)
+int		set_newline(char **backup, char **line)
 {
 	size_t	newline_idx;
 	size_t	len;
@@ -101,5 +92,5 @@ int		get_next_line(int fd, char **line)
 		return (error(&(backup[fd])));
 	if (len == 0 && backup[fd][0] == '\0')
 		return (final_reset(&(backup[fd]), line));
-	return (split_newline(&(backup[fd]), line));
+	return (set_newline(&(backup[fd]), line));
 }

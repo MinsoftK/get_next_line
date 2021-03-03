@@ -26,14 +26,14 @@ int		have_newline(const char *backupfd)
 	return (-1);
 }
 
-int		split_newline(char **backup, char **line)
+int		set_newline(char **backup, char **line)
 {
 	size_t	newline_idx;
 	size_t	len;
 	char	*temp;
 
 	newline_idx = have_newline(*backup);
-	*backup[newline_idx] = '\0';
+	(*backup)[newline_idx] = '\0';
 	*line = ft_strdup(*backup);
 	len = ft_strlen(*backup + newline_idx + 1);
 	if (len == 0)
@@ -89,5 +89,5 @@ int		get_next_line(int fd, char **line)
 		return (error(&(backup[fd])));
 	if (len == 0 && backup[fd][0] == '\0')
 		return (final_reset(&(backup[fd]), line));
-	return (split_newline(&(backup[fd]), line));
+	return (set_newline(&(backup[fd]), line));
 }
