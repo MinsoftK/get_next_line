@@ -33,7 +33,6 @@ int		set_newline(char **backup, char **line)
 	int		result;
 	char	*temp;
 
-	newline_idx = have_newline(*backup);
 	(*backup)[newline_idx] = '\0';
 	*line = ft_strdup(*backup);
 	result = (((*line)[newline_idx - 1] == '\0') ? READ : EndLine);
