@@ -30,21 +30,18 @@ int		set_newline(char **backup, char **line)
 {
 	size_t	newline_idx;
 	size_t	len;
+	size_t	result;
 	char	*temp;
 
 	newline_idx = have_newline(*backup);
-	*line = (char *)malloc(newline_idx + 1);
-	len = ft_strlen(*backup);
-	if (len == 0)
-	{
-		*backup = 0;
-		return (1);
-	}
-	
+	(*backup)[newline_idx] = '\0';
+	*line = ft_strdup(*backup);
+	result = (((*line)[newline_idx] == '\0') ? READ : EndLine);
 	temp = ft_strdup(*backup + newline_idx + 1);
-	free(*backup);
+	if (*backup && result == EndLine)
+		free (*backup);
 	*backup = temp;
-	return (1);
+	return (result);
 }
 
 int		error(char **backup)
