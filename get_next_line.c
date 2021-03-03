@@ -12,20 +12,6 @@
 
 #include "get_next_line.h"
 
-int		have_newline(const char *backupfd)
-{
-	size_t idx;
-
-	idx = 0;
-	while (backupfd[idx])
-	{
-		if (backupfd[idx] == '\n')
-			return (idx);
-		idx++;
-	}
-	return (-1);
-}
-
 int		set_newline(char **backup, char **line)
 {
 	int		result;
@@ -45,7 +31,7 @@ int		set_newline(char **backup, char **line)
 	}
 	(*line)[i] = '\0';
 	result = (((*backup)[size] == '\n') ? READ : EndLine);
-	temp = *(backup + size + 1);
+	temp = (result ? ft_sizepush(*backup, size + 1) : NULL);
 	if (*backup && result == EndLine)
 		free (*backup);
 	*backup = temp;
