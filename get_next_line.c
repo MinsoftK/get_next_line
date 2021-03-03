@@ -30,13 +30,21 @@ int		set_newline(char **backup, char **line)
 {
 	int		result;
 	int		size;
+	int		i;
 	char	*temp;
 
 	size = 0;
 	while ((*backup)[size] && (*backup)[size] != '\n')
 		size++;
-	(*backup)[size] = '\0';
-	*line = ft_strdup(*backup);
+
+	*line = (char *)malloc (size + 1);
+	i = 0;
+	while ((*backup)[size] != '\n' && (*backup)[i])
+	{
+		(*line)[i] = (*backup)[i];
+		i++;
+	}
+	(*line)[i] = '\0';
 	result = (((*backup)[size] == '\0') ? READ : EndLine);
 	temp = ft_strdup(*backup + size + 1);
 	if (*backup && result == EndLine)
