@@ -28,9 +28,9 @@ int		have_newline(const char *backupfd)
 
 int		set_newline(char **backup, char **line)
 {
-	size_t	newline_idx;
-	size_t	len;
-	size_t	result;
+	int		newline_idx;
+	int		len;
+	int		result;
 	char	*temp;
 
 	newline_idx = have_newline(*backup);
