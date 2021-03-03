@@ -47,6 +47,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		while (*s1)
 		{
 			temp[i++] = *s1;
+			s1++;
 		}
 		while (*s2)
 		{
