@@ -37,9 +37,9 @@ int		set_newline(char **backup, char **line)
 	while ((*backup)[size] && (*backup)[size] != '\n')
 		size++;
 
-	*line = (char *)malloc (size + 1);
+	*line = (char *)malloc(size + 1);
 	i = 0;
-	while ((*backup)[size] != '\n' && (*backup)[i])
+	while (i < size)
 	{
 		(*line)[i] = (*backup)[i];
 		i++;
