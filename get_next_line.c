@@ -12,6 +12,20 @@
 
 #include "get_next_line.h"
 
+int					is_newline(char *backup)
+{
+	int				i;
+
+	i = 0;
+	while (backup[i])
+	{
+		if (backup[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 int		set_newline(char **backup, char **line)
 {
 	int		result;
@@ -19,7 +33,14 @@ int		set_newline(char **backup, char **line)
 	int		i;
 	char	*temp;
 
-	size = 0;
+	size = is_newline(*backup);
+	(*backup)[size] = '\0';
+	*line = ft_strdup(*backup);
+	temp = ft_strdup(*backup + size + 1);
+	free(*backup);
+	*backup = temp;
+	return (1);
+	/*size = 0;
 	while ((*backup)[size] && (*backup)[size] != '\n')
 		size++;
 	*line = (char *)malloc(size + 1);
@@ -31,12 +52,13 @@ int		set_newline(char **backup, char **line)
 	}
 	(*line)[i] = '\0';
 	result = (((*backup)[size] == '\n') ? READ : EndLine);
-	//temp = (result ? ft_sizepush(*backup, size + 1) : NULL);
-	temp = ft_strdup(*backup + size + 1);
+	temp = (result ? ft_sizepush(*backup, size + 1) : NULL);
+	
 	if (*backup && result == EndLine)
 		free (*backup);
 	*backup = temp;
 	return (result);
+	*/
 }
 
 int		error(char **backup)
