@@ -28,7 +28,7 @@ int					is_newline(char *backup)
 
 int		set_newline(char **backup, char **line)
 {
-	int		result;
+//	int		result;
 	int		size;
 //	int		i;
 	char	*temp;
