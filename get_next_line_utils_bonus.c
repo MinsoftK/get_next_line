@@ -12,10 +12,10 @@
 
 #include "get_next_line.h"
 
-char 	*ft_strnul(void)
+char	*ft_strnul(void)
 {
 	char *result;
-	
+
 	result = (char *)malloc(1);
 	*result = '\0';
 	return (result);
@@ -84,7 +84,7 @@ char	*ft_strchr(const char *str, int ch)
 char	*ft_sizepush(char *backup, int size)
 {
 	int i;
-	
+
 	i = 0;
 	while (backup[i + size])
 	{
