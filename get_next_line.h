@@ -35,6 +35,5 @@ int		ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_sizepush(char *backup, int size);
 char	*ft_strchr(const char *str, int ch);
-void	*ft_strdup(const char *s);
-
+void		*ft_strdup(const char *s);//test
 #endif

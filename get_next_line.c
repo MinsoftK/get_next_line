@@ -30,7 +30,7 @@ int		set_newline(char **backup, char **line)
 {
 	int		result;
 	int		size;
-	int		i;
+//	int		i;
 	char	*temp;
 
 	size = is_newline(*backup);
