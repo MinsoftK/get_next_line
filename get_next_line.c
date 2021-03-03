@@ -36,7 +36,6 @@ int		set_newline(char **backup, char **line)
 	size = 0;
 	while ((*backup)[size] && (*backup)[size] != '\n')
 		size++;
-
 	*line = (char *)malloc(size + 1);
 	i = 0;
 	while (i < size)
@@ -45,7 +44,7 @@ int		set_newline(char **backup, char **line)
 		i++;
 	}
 	(*line)[i] = '\0';
-	result = (((*backup)[size] == '\0') ? READ : EndLine);
+	result = (((*backup)[size] == '\n') ? READ : EndLine);
 	temp = ft_strdup(*backup + size + 1);
 	if (*backup && result == EndLine)
 		free (*backup);
