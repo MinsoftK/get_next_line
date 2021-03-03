@@ -35,7 +35,7 @@ int		set_newline(char **backup, char **line)
 	newline_idx = have_newline(*backup);
 	(*backup)[newline_idx] = '\0';
 	*line = ft_strdup(*backup);
-	result = (((*line)[newline_idx] == '\0') ? READ : EndLine);
+	result = (((*line)[newline_idx - 1] == '\0') ? READ : EndLine);
 	temp = ft_strdup(*backup + newline_idx + 1);
 	if (*backup && result == EndLine)
 		free (*backup);
