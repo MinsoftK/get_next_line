@@ -35,6 +35,5 @@ size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_strdup(const char *s);
 char	*ft_strchr(const char *str, int ch);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
