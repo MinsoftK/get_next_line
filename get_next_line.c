@@ -28,19 +28,12 @@ int					is_newline(char *backup)
 
 int		set_newline(char **backup, char **line)
 {
-//	int		result;
+	int		result;
 	int		size;
-//	int		i;
+	int		i;
 	char	*temp;
 
-	size = is_newline(*backup);
-	(*backup)[size] = '\0';
-	*line = ft_strdup(*backup);
-	temp = ft_strdup(*backup + size + 1);
-	free(*backup);
-	*backup = temp;
-	return (1);
-	/*size = 0;
+	size = 0;
 	while ((*backup)[size] && (*backup)[size] != '\n')
 		size++;
 	*line = (char *)malloc(size + 1);
@@ -58,7 +51,6 @@ int		set_newline(char **backup, char **line)
 		free (*backup);
 	*backup = temp;
 	return (result);
-	*/
 }
 
 int		error(char **backup)
