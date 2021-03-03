@@ -21,9 +21,9 @@ char 	*ft_strnul(void)
 	return (result);
 }
 
-size_t		ft_strlen(const char *str)
+int		ft_strlen(const char *str)
 {
-	size_t i;
+	int i;
 
 	i = 0;
 	if (!str)
@@ -33,7 +33,7 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
 	size_t	len2;
@@ -79,7 +79,7 @@ char	*ft_strchr(const char *str, int ch)
 	return (&stemp[i]);
 }
 
-int		ft_sizepush(char *backup, int size)
+char	*ft_sizepush(char *backup, int size)
 {
 	int i;
 	
