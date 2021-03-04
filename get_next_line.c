@@ -71,7 +71,7 @@ int		get_next_line(int fd, char **line)
 	0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
 	{
 		buff[len] = '\0';
-		if (tmp_str = ft_strjoin(backup[fd], buff) == NULL)
+		if ((tmp_str = ft_strjoin(backup[fd], buff)) == NULL)
 			return (ERROR);
 		if (backup[fd])
 			free(backup[fd]);
