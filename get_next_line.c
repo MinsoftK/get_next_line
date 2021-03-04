@@ -32,12 +32,16 @@ int		set_newline(char **backup, char **line)
 	(*line)[i] = '\0';
 	result = (((*backup)[size] == '\n') ? READ : EOFLINE);
 	temp = (result ? ft_sizepush(*backup, size + 1) : NULL);
+	if (result == EOFLINE && *backup)
+		free(*backup);
 	*backup = temp;
 	return (result);
 }
 
 int		error(char **backup)
 {
+	if (*backup)
+		free(*backup);
 	*backup = NULL;
 	return (ERROR);
 }
@@ -45,6 +49,8 @@ int		error(char **backup)
 int		final_reset(char **backup, char **line)
 {
 	*line = ft_strnul();
+	if (*backup)
+		free(*backup);
 	*backup = NULL;
 	return (EOFLINE);
 }
@@ -58,14 +64,15 @@ int		get_next_line(int fd, char **line)
 
 	if (fd < 0 || !line || fd >= OPEN_MAX || BUFFER_SIZE <= 0 \
 	|| read(fd, buff, 0) == -1)
-		return (-1);
+		return (ERROR);
 	if (!backup[fd])
 		backup[fd] = ft_strnul();
 	while (!(ft_strchr(backup[fd], '\n')) && \
 	0 < (len = read(fd, (char *)buff, BUFFER_SIZE)))
 	{
 		buff[len] = '\0';
-		tmp_str = ft_strjoin(backup[fd], buff);
+		if (tmp_str = ft_strjoin(backup[fd], buff) == NULL)
+			return (ERROR);
 		if (backup[fd])
 			free(backup[fd]);
 		backup[fd] = tmp_str;

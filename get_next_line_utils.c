@@ -17,7 +17,8 @@ char	*ft_strnul(void)
 	char *result;
 
 	result = (char *)malloc(1);
-	*result = '\0';
+	if (result)
+		*result = '\0';
 	return (result);
 }
 
