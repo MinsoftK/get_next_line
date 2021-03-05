@@ -16,7 +16,8 @@ char	*ft_strnul(void)
 {
 	char *result;
 
-	result = (char *)malloc(1);
+	result = (char *)malloc(1);	//동적할당 실패했을경우를 protect해야한다. 평가자들마다 다르지만 철저하신 분들은 틀렸다한다. 
+	//개인적으로 malloc 1을 실패하는 극단적인 경우를 생각해야되나 싶다. defense 잘해보시길...
 	if (result)
 		*result = '\0';
 	return (result);

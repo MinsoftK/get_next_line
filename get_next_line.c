@@ -26,7 +26,7 @@ int		set_newline(char **backup, char **line)
 	i = 0;
 	while (i < size)
 	{
-		(*line)[i] = (*backup)[i]; //0 ~ 9 0
+		(*line)[i] = (*backup)[i];
 		i++;
 	}
 	(*line)[i] = '\0';
