@@ -26,7 +26,7 @@ int		set_newline(char **backup, char **line)
 	i = 0;
 	while (i < size)
 	{
-		(*line)[i] = (*backup)[i];
+		(*line)[i] = (*backup)[i]; //0 ~ 9 0
 		i++;
 	}
 	(*line)[i] = '\0';
@@ -73,7 +73,7 @@ int		get_next_line(int fd, char **line)
 		buff[len] = '\0';
 		if ((tmp_str = ft_strjoin(backup[fd], buff)) == NULL)
 			return (ERROR);
-		if (backup[fd])
+		if (backup[fd])			//check 해볼 부분 : tmp_str에서 동적할당을 실패했을 경우 backup의 free가 동시에 돼야 한다. 점수와는 연관이 없다.
 			free(backup[fd]);
 		backup[fd] = tmp_str;
 	}
